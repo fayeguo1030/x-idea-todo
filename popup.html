@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>X 待办</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>X 待办</h1>
+      <nav class="tabs">
+        <button type="button" class="tab is-active" data-tab="todos">待办</button>
+        <button type="button" class="tab" data-tab="follows">我的关注</button>
+      </nav>
+      <p class="context-hint" id="context-hint" hidden>
+        <span class="hint-mark" aria-hidden="true">i</span>
+        <span>满 48 小时还没完成，会写成「已放 N 天」，工具栏数字也是这几条。</span>
+      </p>
+    </header>
+    <section id="todos">
+      <p class="empty" id="empty">还没有待办</p>
+      <p class="hint" id="hint">打开 X，在帖子下方点「记成待办」。改一句再回车，或直接回车保存原话。</p>
+      <div id="todo-scroll">
+        <ul id="list"></ul>
+        <button type="button" id="done-toggle" hidden>已完成</button>
+        <ul id="done-list" hidden></ul>
+      </div>
+    </section>
+    <section id="follows" hidden>
+      <div class="follow-toolbar">
+        <input id="follow-search" class="follow-search" type="search" maxlength="120" autocomplete="off" placeholder="搜索昵称、用户名或主页链接" aria-label="搜索关注" />
+        <button type="button" id="follow-add-toggle">添加</button>
+      </div>
+      <form id="follow-form" class="follow-form" hidden>
+        <input id="follow-input" type="text" maxlength="80" autocomplete="off" placeholder="@用户名 或主页链接" aria-label="要添加的博主" />
+        <button type="submit">加入</button>
+        <button type="button" id="follow-add-cancel" class="is-quiet">取消</button>
+      </form>
+      <p class="form-error" id="follow-error" hidden></p>
+      <div id="follow-tags" class="tag-bar" hidden></div>
+      <p class="empty" id="follow-empty">还没有关注</p>
+      <button type="button" id="follow-offer" class="follow-offer" hidden></button>
+      <p class="hint" id="follow-hint">点「添加」输入用户名，或在博主主页点「加入关注」。</p>
+      <p class="context-hint is-follow" id="follow-context-hint" hidden>
+        <span class="hint-mark" aria-hidden="true">i</span>
+        <span>按住左侧圆点拖动排序，每人最多 3 个标签。</span>
+      </p>
+      <ul id="follow-list"></ul>
+    </section>
+    <script src="badge.js"></script>
+    <script src="follows.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
